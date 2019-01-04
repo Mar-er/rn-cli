@@ -5,18 +5,22 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "menu": "adb shell input keyevent 82",
     "clear-build-cache": "cd android && gradlew clean",
     "clear-build": "rimraf android/app/build",
     "clear": "npm run clear-build-cache && npm run clear-build-cache",
-    "clear-all": "yarn cache clean -f && npm cache clean -f && cnpm cache clean -f && npm run clear",
-    "android": "react-native run-android",
-    "ios": "react-native run-ios"
+    "clear-all": "yarn cache clean -f && npm cache clean -f && cnpm cache clean -f && npm run clear"
   },
   "dependencies": {
     "react": "16.6.3",
     "react-native": "0.57.8",
     "react-native-gesture-handler": "^1.0.12",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.0.9",
+    "react-navigation-redux-helpers": "^2.0.9",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
