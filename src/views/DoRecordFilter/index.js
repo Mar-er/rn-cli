@@ -1,3 +1,3 @@
-import DoRecordFilter from './DoRecordFilter'
+import DoRecordFilter from './DoRecordFilter';
 
-export default DoRecordFilter
+export default DoRecordFilter;

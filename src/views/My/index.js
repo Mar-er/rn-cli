@@ -1,3 +1,3 @@
-import My from './My'
+import My from './My';
 
-export default My
+export default My;

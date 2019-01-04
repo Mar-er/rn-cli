@@ -17,7 +17,7 @@
 ---
 
 ## 说明
- - eslint 使用 standard 规范请安装相应[插件](https://standardjs.com/)
+ - eslint 继承 Airbnb 规范
 
 -----
 

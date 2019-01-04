@@ -1,3 +1,3 @@
-import ErrorBook from './ErrorBook'
+import ErrorBook from './ErrorBook';
 
-export default ErrorBook
+export default ErrorBook;

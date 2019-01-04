@@ -1,3 +1,3 @@
-import DoRecord from './DoRecord'
+import DoRecord from './DoRecord';
 
-export default DoRecord
+export default DoRecord;
