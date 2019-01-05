@@ -1,3 +1,3 @@
-import AppContainer from './src'
+import App from './src';
 
-export default AppContainer
+export default App;

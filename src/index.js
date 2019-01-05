@@ -1,4 +1,13 @@
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
+import { AppNavigator } from './nav';
 
-import router from './router';
 
-export default router;
+const app = () => (
+  <Provider store={store}>
+    <AppNavigator />
+  </Provider>
+);
+
+export default app;
