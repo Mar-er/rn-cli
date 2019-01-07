@@ -4,6 +4,12 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
 export default () => (
   <ScrollView>
     <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
@@ -12,9 +18,3 @@ export default () => (
     </SafeAreaView>
   </ScrollView>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

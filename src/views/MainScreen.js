@@ -19,7 +19,7 @@ const MainScreen = ({ navigation }) => (
     <AuthButton />
     <Button
       title="go to tab"
-      onPress={() => navigation.navigate('Tab')}
+      onPress={() => navigation.navigate('App')}
     />
   </View>
 );
