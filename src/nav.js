@@ -9,12 +9,13 @@ import {
 import SignIn from './views/Account/SignIn';
 import SignUp from './views/Account/SignUp';
 import PasswordReset from './views/Account/PasswordReset';
-import Initial from './views/Initial';
 import Home from './views/Home';
 import DoRecord from './views/DoRecord';
 import ErrorBook from './views/ErrorBook';
 import My from './views/My';
 import DoRecordFilter from './views/DoRecordFilter';
+import AuthLoading from './views/Account/AuthLoading';
+import Test from './views/Test';
 
 // 做题记录筛选抽屉路由
 const doRecordDrawer = {
@@ -66,10 +67,17 @@ const noHeaderOptions = {
 };
 const NoHeader = createStackNavigator(noHeader, noHeaderOptions);
 
+// 含有 header 的路由集合
+const hasHeader = {
+  Test: { screen: Test },
+};
+const HasHeader = createStackNavigator(hasHeader);
+
 // 主体路由
 const app = {
   Tab: { screen: NavTabs },
   NoHeader: { screen: NoHeader },
+  HasHeader: { screen: HasHeader },
 };
 const appOptions = {
   defaultNavigationOptions: {
@@ -86,12 +94,12 @@ const App = createStackNavigator(app, appOptions);
  */
 const RootNavigator = createSwitchNavigator(
   {
-    Initial: { screen: Initial },
+    AuthLoading: { screen: AuthLoading },
     Login: { screen: SignIn },
     App: { screen: App },
   },
   {
-    initialRouteName: 'Initial',
+    initialRouteName: 'AuthLoading',
   },
 );
 
