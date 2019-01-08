@@ -6,8 +6,10 @@ import Svg, {
   Circle, Rect,
 } from 'react-native-svg';
 import SvgUri from 'react-native-svg-uri';
+import { VictoryBar } from 'victory-native';
 import Icon from '../../../components/Icon';
 import CSvgUri from '../../../components/Svg';
+import LiquidFill from '../../../components/LiquidFill';
 
 const { width, height } = Dimensions.get('window');
 export default ({ navigation }) => (
@@ -53,6 +55,8 @@ export default ({ navigation }) => (
         height="200"
         source="no-data"
       />
+      <VictoryBar />
+      <LiquidFill />
     </View>
   </View>
 );
