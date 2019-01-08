@@ -9,12 +9,10 @@
     "ios": "react-native run-ios",
     "build": "cd android && gradlew assembleRelease",
     "menu": "adb shell input keyevent 82",
+    "iconfontMap": "node ./src/scripts/iconfontMap/iconfontMap.js",
     "remove": "adb uninstall com.cjhms_app",
     "stop": "adb shell am force-stop com.cjhms_app",
     "start-app": "adb shell am start -n com.cjhms_app/.MainActivity",
-    "iconfontMap": "cd ./src/scripts && pip install fonttools && python iconfontMap.py ../public/icon/iconfont.ttf iconfont.js",
-    "linux-iconfontMap": "npm run iconfontMap && cd ./src/scripts && mv ./iconfont.js ../public/icon/ && cd ../public/icon && mv ./iconfont.ttf ../../../android/app/src/main/assets/fonts/",
-    "win-iconfontMap": "npm run iconfontMap && cd ./src/scripts && move ./iconfont.js ../public/icon/ && cd ../public/icon && move ./iconfont.ttf ../../../android/app/src/main/assets/fonts/",
     "clear-build-cache": "cd android && gradlew clean",
     "clear-build": "rimraf android/app/build",
     "clear": "npm run clear-build-cache && npm run clear-build-cache",
@@ -52,7 +50,8 @@
     "eslint-plugin-react": "^7.12.2",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.51.1",
-    "react-test-renderer": "16.6.3"
+    "react-test-renderer": "16.6.3",
+    "shelljs": "^0.8.3"
   },
   "jest": {
     "preset": "react-native"
