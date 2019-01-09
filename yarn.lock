@@ -1347,7 +1347,7 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^2.11.0, commander@^2.9.0:
+commander@^2.11.0, commander@^2.19.0, commander@^2.9.0:
   version "2.19.0"
   resolved "http://registry.npm.taobao.org/commander/download/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
@@ -4557,6 +4557,10 @@ react-native-vector-icons@^6.1.0:
     lodash "^4.0.0"
     prop-types "^15.6.2"
     yargs "^8.0.2"
+
+react-native-xlog@0.6.1:
+  version "0.6.1"
+  resolved "https://registry.npmjs.org/react-native-xlog/-/react-native-xlog-0.6.1.tgz#eb6631d0001a20a53d9a1524642ad73a0ffb8076"
 
 react-native@0.57.8:
   version "0.57.8"

@@ -154,6 +154,8 @@ android {
 }
 
 dependencies {
+    implementation "com.tencent.mars:mars-xlog:1.0.4"
+    implementation project(':react-native-xlog')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-svg')
     implementation project(':react-native-vector-icons')

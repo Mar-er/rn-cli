@@ -13,8 +13,8 @@ buildscript {
         // jcenter()
         jcenter(){ url 'http://jcenter.bintray.com/' }
         // 公司仓库 添加 nexus.cjkj.co  10.0.0.181 到hosts
-        maven { url 'http://nexus.cjkj.co/repository/maven-fed/' }
-        maven { url 'http://nexus.cjkj.co/repository/maven-bintray-jcenter/' }
+        // maven { url 'http://nexus.cjkj.co/repository/maven-fed/' }
+        // maven { url 'http://nexus.cjkj.co/repository/maven-bintray-jcenter/' }
         // 阿里云仓库
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
@@ -41,8 +41,8 @@ allprojects {
             url "$rootDir/../node_modules/react-native/android"
         }
         // 公司仓库 添加 nexus.cjkj.co  10.0.0.181 到hosts
-        maven { url 'http://nexus.cjkj.co/repository/maven-fed/' }
-        maven { url 'http://nexus.cjkj.co/repository/maven-bintray-jcenter/' }
+        // maven { url 'http://nexus.cjkj.co/repository/maven-fed/' }
+        // maven { url 'http://nexus.cjkj.co/repository/maven-bintray-jcenter/' }
         // 阿里云仓库
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
@@ -56,4 +56,9 @@ allprojects {
 task wrapper(type: Wrapper) {
     gradleVersion = '4.4'
     distributionUrl = distributionUrl.replace("bin", "all")
+}
+
+ext {
+    MARS_XLOG_VERSION_NAME='1.0.4'
+    MARS_XLOG_VERSION_NAME_SUFFIX = ''
 }
