@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Orientation from 'react-native-orientation';
 import SplashScreen from 'react-native-splash-screen';
+import {
+  StatusBar, View, NativeModules, Platform, ProgressBarAndroid,
+} from 'react-native';
+import Progress from './components/Progress';
+
+const { StatusBarManager } = NativeModules;
 
 class AuthLoading extends React.Component {
   componentDidMount() {
@@ -11,7 +17,26 @@ class AuthLoading extends React.Component {
 
   render() {
     const { children } = this.props;
-    return children;
+    const progress = 0;
+
+    this.STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT - 0;
+
+    return (
+      <Fragment>
+        <StatusBar
+          backgroundColor="transparent"
+          translucent
+        />
+        {
+          progress
+            ? <Progress progress={progress} />
+            : null
+        }
+        <View style={{ paddingTop: this.STATUSBAR_HEIGHT, backgroundColor: 'blue', progress }}>
+          {children}
+        </View>
+      </Fragment>
+    );
   }
 }
 

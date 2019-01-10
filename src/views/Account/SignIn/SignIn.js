@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 export default ({ navigation }) => {
   Xlog.info('tag', 'log');
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: '#333' }}>
       <Text>SignIn</Text>
       <Button
         title="点击登陆"

@@ -10,6 +10,7 @@ import android.content.res.Configuration;
 
 import android.os.Bundle;
 import org.devio.rn.splashscreen.SplashScreen; 
+import android.view.View;
 
 public class MainActivity extends ReactActivity {
 
@@ -24,7 +25,8 @@ public class MainActivity extends ReactActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen.show(this);  // here
+        SplashScreen.show(this);
+        // hideStatus();
         super.onCreate(savedInstanceState);
     }
     
@@ -33,7 +35,7 @@ public class MainActivity extends ReactActivity {
         return new ReactActivityDelegate(this, getMainComponentName()) {
             @Override
             protected ReactRootView createRootView() {
-            return new RNGestureHandlerEnabledRootView(MainActivity.this);
+                return new RNGestureHandlerEnabledRootView(MainActivity.this);
             }
         };
     }
@@ -44,5 +46,9 @@ public class MainActivity extends ReactActivity {
         Intent intent = new Intent("onConfigurationChanged");
         intent.putExtra("newConfig", newConfig);
         this.sendBroadcast(intent);
+    }
+
+    private void hideStatus() {
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 }
