@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Orientation from 'react-native-orientation';
 import SplashScreen from 'react-native-splash-screen';
 import {
-  StatusBar, View, NativeModules, Platform, ProgressBarAndroid,
+  StatusBar, View, NativeModules, Platform,
 } from 'react-native';
 import Progress from './components/Progress';
 
@@ -32,7 +32,7 @@ class AuthLoading extends React.Component {
             ? <Progress progress={progress} />
             : null
         }
-        <View style={{ paddingTop: this.STATUSBAR_HEIGHT, backgroundColor: 'blue', progress }}>
+        <View style={{ paddingTop: this.STATUSBAR_HEIGHT, backgroundColor: 'blue', flex: 1 }}>
           {children}
         </View>
       </Fragment>
