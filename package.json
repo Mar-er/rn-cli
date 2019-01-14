@@ -21,6 +21,7 @@
     "clear-all": "yarn cache clean -f && npm cache clean -f && cnpm cache clean -f && npm run clear"
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.2.3",
     "axios": "^0.18.0",
     "dayjs": "^1.7.8",
     "immer": "^1.10.0",
