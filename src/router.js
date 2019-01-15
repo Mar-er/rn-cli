@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { BackHandler, Text } from 'react-native';
+import PropTypes from 'prop-types';
 import {
   createDrawerNavigator, createBottomTabNavigator, createStackNavigator,
 } from 'react-navigation';
@@ -103,7 +104,7 @@ const AppNavigator = createStackNavigator(
     defaultNavigationOptions: {
       header: null,
     },
-  }
+  },
 );
 
 export const routerReducer = createNavigationReducer(AppNavigator);
@@ -113,51 +114,61 @@ export const routerMiddleware = createReactNavigationReduxMiddleware(
   state => state.router,
 );
 
-const App = reduxifyNavigator(AppNavigator, 'root')
+const App = reduxifyNavigator(AppNavigator, 'root');
 
 @connect(({ app, router }) => ({ app, router }))
 class Router extends PureComponent {
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.backHandle)
-    console.log('装载没有')
+    BackHandler.addEventListener('hardwareBackPress', this.backHandle);
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.backHandle)
-    console.log('卸载没有')
+    BackHandler.removeEventListener('hardwareBackPress', this.backHandle);
   }
-  
+
   getActiveRouteName = (navigationState) => {
-  if (!navigationState) {
-    return null
+    if (!navigationState) {
+      return null;
+    }
+    const route = navigationState.routes[navigationState.index];
+    if (route.routes) {
+      return this.getActiveRouteName(route);
+    }
+    return route.routeName;
   }
-  const route = navigationState.routes[navigationState.index]
-  if (route.routes) {
-    return this.getActiveRouteName(route)
-  }
-  return route.routeName
-}
 
   backHandle = () => {
-    const currentScreen = this.getActiveRouteName(this.props.router)
+    const { router, dispatch } = this.props;
+    const currentScreen = this.getActiveRouteName(router);
     if (currentScreen === 'Login') {
-      return true
+      return true;
     }
     if (currentScreen !== 'Home') {
-      this.props.dispatch(NavigationActions.back())
-      return true
+      dispatch(NavigationActions.back());
+      return true;
     }
-    return false
+    return false;
   }
 
   render() {
-    const { app, dispatch, router } = this.props
+    const { app, dispatch, router } = this.props;
+    console.log(155, dispatch);
+    if (app.loading) return <Text>正在加载。。。</Text>;
 
-    if (app.loading) return <Text>正在加载。。。</Text>
-
-    return <App dispatch={dispatch} state={router} />
+    return <App dispatch={dispatch} state={router} />;
   }
-
 }
 
-export default Router
+Router.defaultProps = {
+  router: {},
+  dispatch: null,
+  app: null,
+};
+
+Router.propTypes = {
+  router: PropTypes.any,
+  dispatch: PropTypes.any,
+  app: PropTypes.any,
+};
+
+export default Router;
