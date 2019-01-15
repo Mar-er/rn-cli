@@ -152,7 +152,6 @@ class Router extends PureComponent {
 
   render() {
     const { app, dispatch, router } = this.props;
-    console.log(155, dispatch);
     if (app.loading) return <Text>正在加载。。。</Text>;
 
     return <App dispatch={dispatch} state={router} />;
@@ -161,14 +160,14 @@ class Router extends PureComponent {
 
 Router.defaultProps = {
   router: {},
-  dispatch: null,
-  app: null,
+  dispatch: () => {},
+  app: {},
 };
 
 Router.propTypes = {
-  router: PropTypes.any,
-  dispatch: PropTypes.any,
-  app: PropTypes.any,
+  router: PropTypes.object,
+  dispatch: PropTypes.func,
+  app: PropTypes.object,
 };
 
 export default Router;
