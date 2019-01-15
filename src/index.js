@@ -5,6 +5,7 @@ import {
   StatusBar, View, NativeModules, Platform,
 } from 'react-native';
 import App from './initial';
+import Adaptation from './components/Adaptation';
 
 const { StatusBarManager } = NativeModules;
 
@@ -24,7 +25,9 @@ class AuthLoading extends React.Component {
           translucent
         />
         <View style={{ paddingTop: this.STATUSBAR_HEIGHT, backgroundColor: 'blue', flex: 1 }}>
-          <App />
+          <Adaptation>
+            <App />
+          </Adaptation>
         </View>
       </Fragment>
     );
