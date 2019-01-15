@@ -1,50 +1,35 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Orientation from 'react-native-orientation';
-import SplashScreen from 'react-native-splash-screen';
-import {
-  StatusBar, View, NativeModules, Platform,
-} from 'react-native';
-import Progress from './components/Progress';
+import React from 'react';
+import { persistStore, persistReducer } from 'redux-persist';
+import createSensitiveStorage from 'redux-persist-sensitive-storage';
 
-const { StatusBarManager } = NativeModules;
+import dva from './utils/dva';
+import Router, { routerMiddleware, routerReducer } from './router';
+import appModel from './models/app';
 
-class AuthLoading extends React.Component {
-  componentDidMount() {
-    Orientation.lockToPortrait();
-    SplashScreen.hide();
-  }
+const storage = createSensitiveStorage({
+  keychainService: 'myKeychain',
+  sharedPreferencesName: 'mySharedPrefs',
+});
 
-  render() {
-    const { children } = this.props;
-    const progress = 0;
-
-    this.STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT - 0;
-
-    return (
-      <Fragment>
-        <StatusBar
-          backgroundColor="transparent"
-          translucent
-        />
-        {
-          progress
-            ? <Progress progress={progress} />
-            : null
-        }
-        <View style={{ paddingTop: this.STATUSBAR_HEIGHT, backgroundColor: 'blue', flex: 1 }}>
-          {children}
-        </View>
-      </Fragment>
-    );
-  }
-}
-
-AuthLoading.propTypes = {
-  children: PropTypes.element.isRequired,
+const persistConfig = {
+  key: 'root',
+  storage,
 };
 
-AuthLoading.defaultProps = {
-};
+const persistEnhancer = () => createStore => (reducer, initialState, enhancer) => createStore(persistReducer(persistConfig, reducer), initialState, enhancer);
 
-export default AuthLoading;
+const app = dva({
+  initialState: {},
+  models: [appModel],
+  extraReducers: { router: routerReducer },
+  onAction: [routerMiddleware],
+  onError(e) {
+    console.log('onError', e);
+  },
+  extraEnhancers: [persistEnhancer()],
+});
+
+const App = app.start(<Router />);
+persistStore(app._store)   // eslint-disable-line
+
+export default App;

@@ -1,15 +1,34 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import store from './store';
-import { AppNavigator } from './nav';
-import Initial from './Initial';
+import React, { Fragment } from 'react';
+import Orientation from 'react-native-orientation';
+import SplashScreen from 'react-native-splash-screen';
+import {
+  StatusBar, View, NativeModules, Platform,
+} from 'react-native';
+import App from './initial';
 
-const app = () => (
-  <Provider store={store}>
-    <Initial>
-      <AppNavigator />
-    </Initial>
-  </Provider>
-);
+const { StatusBarManager } = NativeModules;
 
-export default app;
+class AuthLoading extends React.Component {
+  componentDidMount() {
+    Orientation.lockToPortrait();
+    SplashScreen.hide();
+  }
+
+  render() {
+    this.STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT - 0;
+
+    return (
+      <Fragment>
+        <StatusBar
+          backgroundColor="transparent"
+          translucent
+        />
+        <View style={{ paddingTop: this.STATUSBAR_HEIGHT, backgroundColor: 'blue', flex: 1 }}>
+          <App />
+        </View>
+      </Fragment>
+    );
+  }
+}
+
+export default AuthLoading;

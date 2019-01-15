@@ -154,6 +154,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-sensitive-info')
     implementation "com.tencent.mars:mars-xlog:1.0.4"
     implementation project(':react-native-xlog')
     implementation project(':react-native-linear-gradient')

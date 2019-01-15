@@ -29,10 +29,10 @@ export default ({ navigation }) => {
   Xlog.info('tag', 'log');
   return (
     <ScrollView style={{ backgroundColor: '#333' }}>
-      <Text>SignIn</Text>
+      <Text>Login</Text>
       <Button
         title="点击登陆"
-        onPress={() => { navigation.navigate('App'); }}
+        onPress={() => { navigation.navigate('Main'); }}
       />
       <Icon name="dingzheng" size={60} />
       <Svg height={300} width={300} viewBox="0 0 100 100">

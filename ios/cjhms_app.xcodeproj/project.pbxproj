@@ -61,6 +61,7 @@
 		00136B9A69A144A283D000D8 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA2F87D42A24EDA9910AA2D /* libRNSVG-tvOS.a */; };
 		550362D25DD240FBBD0E16ED /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21205CE0582347FFB2226176 /* libBVLinearGradient.a */; };
 		B801AD71E000493287C24FE4 /* libXLogForRN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FB597DC7964C8F9C3E4795 /* libXLogForRN.a */; };
+		86EECB1236B14D3C96FFA65C /* libRNSensitiveInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2C3B31B37149398BA494A3 /* libRNSensitiveInfo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -397,6 +398,8 @@
 		21205CE0582347FFB2226176 /* libBVLinearGradient.a */ = {isa = PBXFileReference; name = "libBVLinearGradient.a"; path = "libBVLinearGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		279382B6A3504D67ABF892D4 /* XLogForRN.xcodeproj */ = {isa = PBXFileReference; name = "XLogForRN.xcodeproj"; path = "../node_modules/react-native-xlog/ios/XLogForRN.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		26FB597DC7964C8F9C3E4795 /* libXLogForRN.a */ = {isa = PBXFileReference; name = "libXLogForRN.a"; path = "libXLogForRN.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		68ABB562D3C140B1823DE866 /* RNSensitiveInfo.xcodeproj */ = {isa = PBXFileReference; name = "RNSensitiveInfo.xcodeproj"; path = "../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		3E2C3B31B37149398BA494A3 /* libRNSensitiveInfo.a */ = {isa = PBXFileReference; name = "libRNSensitiveInfo.a"; path = "libRNSensitiveInfo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -431,6 +434,7 @@
 				FEE0F9029C1A4AA98E013632 /* libRNSVG.a in Frameworks */,
 				550362D25DD240FBBD0E16ED /* libBVLinearGradient.a in Frameworks */,
 				B801AD71E000493287C24FE4 /* libXLogForRN.a in Frameworks */,
+				86EECB1236B14D3C96FFA65C /* libRNSensitiveInfo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +630,7 @@
 				07C42153B6374C018BE6CBED /* RNSVG.xcodeproj */,
 				7400757239784FEAA8A513CB /* BVLinearGradient.xcodeproj */,
 				279382B6A3504D67ABF892D4 /* XLogForRN.xcodeproj */,
+				68ABB562D3C140B1823DE866 /* RNSensitiveInfo.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1301,6 +1306,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1311,6 +1317,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-xlog\ios\XLogForRN/**",
+					"$(SRCROOT)\..\node_modules\react-native-sensitive-info\ios\RNSensitiveInfo",
 				);
 			};
 			name = Debug;
@@ -1341,6 +1348,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1351,6 +1359,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-xlog\ios\XLogForRN/**",
+					"$(SRCROOT)\..\node_modules\react-native-sensitive-info\ios\RNSensitiveInfo",
 				);
 			};
 			name = Release;
@@ -1380,6 +1389,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-xlog\ios\XLogForRN/**",
+					"$(SRCROOT)\..\node_modules\react-native-sensitive-info\ios\RNSensitiveInfo",
 				);
 			};
 			name = Debug;
@@ -1408,6 +1418,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-xlog\ios\XLogForRN/**",
+					"$(SRCROOT)\..\node_modules\react-native-sensitive-info\ios\RNSensitiveInfo",
 				);
 			};
 			name = Release;
@@ -1446,6 +1457,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1456,6 +1468,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-xlog\ios\XLogForRN/**",
+					"$(SRCROOT)\..\node_modules\react-native-sensitive-info\ios\RNSensitiveInfo",
 				);
 			};
 			name = Debug;
@@ -1494,6 +1507,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1504,6 +1518,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-xlog\ios\XLogForRN/**",
+					"$(SRCROOT)\..\node_modules\react-native-sensitive-info\ios\RNSensitiveInfo",
 				);
 			};
 			name = Release;
@@ -1541,6 +1556,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1551,6 +1567,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-xlog\ios\XLogForRN/**",
+					"$(SRCROOT)\..\node_modules\react-native-sensitive-info\ios\RNSensitiveInfo",
 				);
 			};
 			name = Debug;
@@ -1588,6 +1605,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1598,6 +1616,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-xlog\ios\XLogForRN/**",
+					"$(SRCROOT)\..\node_modules\react-native-sensitive-info\ios\RNSensitiveInfo",
 				);
 			};
 			name = Release;
