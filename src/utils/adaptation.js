@@ -1,16 +1,17 @@
 import { Dimensions, PixelRatio } from 'react-native';
-// import ExtraDimensions from 'react-native-extra-dimensions-android';
+import ExtraDimensions from 'react-native-extra-dimensions-android';
 
-export const zoomScreen = (dwidth = 1920, dheight = 1080, dim = 'screen') => {
+export const zoomScreen = (dwidth = 750, dheight = 1334, dim = 'screen') => {
   const { width, height } = Dimensions.get(dim);
-  // const virtualMenuHeight = ExtraDimensions.get('SOFT_MENU_BAR_HEIGHT');
-  // const clearHeight = height - virtualMenuHeight;
+  const virtualMenuHeight = ExtraDimensions.get('SOFT_MENU_BAR_HEIGHT');
+  console.log(7, virtualMenuHeight);
+  const clearHeight = height - virtualMenuHeight;
   const designSize = { width: dwidth, height: dheight };
   const pxRatio = PixelRatio.get(dim);
 
   // 将dp转为px
   const w = PixelRatio.getPixelSizeForLayoutSize(width);
-  const h = PixelRatio.getPixelSizeForLayoutSize(height);
+  const h = PixelRatio.getPixelSizeForLayoutSize(clearHeight);
 
   // 竖屏时横向铺满
   if (dwidth < dheight) {
@@ -47,13 +48,13 @@ export const adaptiveRotation = () => {
       width,
       height,
       scale,
-    } = zoomScreen());
+    } = zoomScreen(1334, 750));
   } else {
     ({
       width,
       height,
       scale,
-    } = zoomScreen(1080, 1920));
+    } = zoomScreen());
   }
 
   return { width, height, scale };

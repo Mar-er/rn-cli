@@ -3,6 +3,7 @@ package com.cjhms_app;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import br.com.classapp.RNSensitiveInfo.RNSensitiveInfoPackage;
 import com.engsshi.xlog.XLogPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -36,6 +37,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ExtraDimensionsPackage(),
             new RNSensitiveInfoPackage(),
             new XLogPackage(),
             new LinearGradientPackage(),

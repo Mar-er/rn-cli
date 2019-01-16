@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import Orientation from 'react-native-orientation';
-import SplashScreen from 'react-native-splash-screen';
 import {
-  StatusBar, View, NativeModules, Platform,
+  StatusBar, NativeModules, Platform,
 } from 'react-native';
 import App from './initial';
 import Adaptation from './components/Adaptation';
@@ -12,7 +11,6 @@ const { StatusBarManager } = NativeModules;
 class AuthLoading extends React.Component {
   componentDidMount() {
     Orientation.lockToPortrait();
-    SplashScreen.hide();
   }
 
   render() {
@@ -24,11 +22,9 @@ class AuthLoading extends React.Component {
           backgroundColor="transparent"
           translucent
         />
-        <View style={{ paddingTop: this.STATUSBAR_HEIGHT, backgroundColor: 'blue', flex: 1 }}>
-          <Adaptation>
-            <App />
-          </Adaptation>
-        </View>
+        <Adaptation style={{ paddingTop: this.STATUSBAR_HEIGHT, backgroundColor: 'white' }}>
+          <App />
+        </Adaptation>
       </Fragment>
     );
   }
