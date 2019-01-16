@@ -1,12 +1,24 @@
-import { Dimensions, PixelRatio } from 'react-native';
+import { Dimensions, NativeModules, PixelRatio } from 'react-native';
 import ExtraDimensions from 'react-native-extra-dimensions-android';
+import { deviceInfo } from '.';
 
-export const zoomScreen = (dwidth = 750, dheight = 1334, dim = 'screen') => {
+/**
+ * 设计图按照iPhone8 (750 * 1334) 缩小一倍尺寸 (375 * 667) 设计
+ * 为了适配手机和平板手机使用 375 * 667，平板使用 540 * 960
+ * Android通过 NativeModules.IsPadModule.isPad 获取boolean值
+ */
+const zoomScreen = async () => {
+  const pad = { width: 1920, height: 1080 };
+  const phone = { width: 375, height: 667 };
+  const dim = 'screen';
   const { width, height } = Dimensions.get(dim);
   const virtualMenuHeight = ExtraDimensions.get('SOFT_MENU_BAR_HEIGHT');
-  console.log(7, virtualMenuHeight);
-  const clearHeight = height - virtualMenuHeight;
-  const designSize = { width: dwidth, height: dheight };
+
+  const isPad = await NativeModules.IsPadModule.isPad();
+  const designSize = isPad ? pad : phone;
+
+  // 减去状态栏和虚拟按键高度
+  const clearHeight = height - virtualMenuHeight - deviceInfo.statusHeight;
   const pxRatio = PixelRatio.get(dim);
 
   // 将dp转为px
@@ -14,7 +26,7 @@ export const zoomScreen = (dwidth = 750, dheight = 1334, dim = 'screen') => {
   const h = PixelRatio.getPixelSizeForLayoutSize(clearHeight);
 
   // 竖屏时横向铺满
-  if (dwidth < dheight) {
+  if (designSize.width < designSize.height) {
     const fixedWidthDesignScale = designSize.width / w;
     const fixedWidthWidth = designSize.width;
     const fixedWidthHeight = h * fixedWidthDesignScale;
@@ -36,26 +48,4 @@ export const zoomScreen = (dwidth = 750, dheight = 1334, dim = 'screen') => {
   };
 };
 
-export const adaptiveRotation = () => {
-  const { width: SWidth, height: SHeight } = Dimensions.get('screen');
-  let width;
-  let height;
-  let scale;
-
-  // 屏幕宽高
-  if (SWidth > SHeight) {
-    ({
-      width,
-      height,
-      scale,
-    } = zoomScreen(1334, 750));
-  } else {
-    ({
-      width,
-      height,
-      scale,
-    } = zoomScreen());
-  }
-
-  return { width, height, scale };
-};
+export default zoomScreen;

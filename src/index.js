@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 import Orientation from 'react-native-orientation';
 import {
-  StatusBar, NativeModules, Platform,
+  StatusBar, View,
 } from 'react-native';
 import App from './initial';
 import Adaptation from './components/Adaptation';
-
-const { StatusBarManager } = NativeModules;
+import { deviceInfo } from './utils';
 
 class AuthLoading extends React.Component {
   componentDidMount() {
@@ -14,17 +13,19 @@ class AuthLoading extends React.Component {
   }
 
   render() {
-    this.STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT - 0;
-
+    console.log(16, deviceInfo.statusHeight);
     return (
       <Fragment>
         <StatusBar
           backgroundColor="transparent"
           translucent
         />
-        <Adaptation style={{ paddingTop: this.STATUSBAR_HEIGHT, backgroundColor: 'white' }}>
-          <App />
-        </Adaptation>
+        <View style={{ paddingTop: deviceInfo.statusHeight, backgroundColor: 'white', flex: 1 }}>
+          <Adaptation>
+            <App />
+          </Adaptation>
+        </View>
+
       </Fragment>
     );
   }

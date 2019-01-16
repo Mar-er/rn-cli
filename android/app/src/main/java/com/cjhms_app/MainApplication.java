@@ -25,6 +25,8 @@ import android.os.Environment;
 import com.engsshi.xlog.XLogModule;
 import com.engsshi.xlog.XLogSetting;
 
+import com.cjhms_app.IsPadPackage;
+
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -45,7 +47,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new SplashScreenReactPackage(),
             new OrientationPackage(),
-            new RNGestureHandlerPackage()
+            new RNGestureHandlerPackage(),
+            new IsPadPackage()
       );
     }
 
