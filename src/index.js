@@ -13,7 +13,6 @@ class AuthLoading extends React.Component {
   }
 
   render() {
-    console.log(16, deviceInfo.statusHeight);
     return (
       <Fragment>
         <StatusBar

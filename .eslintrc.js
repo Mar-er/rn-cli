@@ -11,6 +11,8 @@ module.exports = {
         "react/forbid-prop-types": 0,
         "import/named": 0,
         "import/no-named-as-default-member": 0,
-        "strict": 0
+        "strict": 0,
+        "import/prefer-default-export": 0,
+        "no-console": 0
     }
 };

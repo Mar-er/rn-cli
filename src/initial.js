@@ -2,7 +2,7 @@ import React from 'react';
 import { persistStore, persistReducer } from 'redux-persist';
 import createSensitiveStorage from 'redux-persist-sensitive-storage';
 
-import dva from './utils/dva';
+import { dva } from './utils';
 import Router, { routerMiddleware, routerReducer } from './router';
 import appModel from './models/app';
 

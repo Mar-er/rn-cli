@@ -7,9 +7,10 @@ import Svg, {
 } from 'react-native-svg';
 import SvgUri from 'react-native-svg-uri';
 import Xlog from 'react-native-xlog';
-
 import LinearGradient from 'react-native-linear-gradient';
 import { VictoryBar } from 'victory-native';
+import { api } from '../../../utils';
+import { helper } from '../../../config';
 import Icon from '../../../components/Icon';
 import CSvgUri from '../../../components/Svg';
 import LiquidFill from '../../../components/LiquidFill';
@@ -27,12 +28,22 @@ const styles = StyleSheet.create({
 });
 export default ({ navigation }) => {
   Xlog.info('tag', 'log');
+
+  const onPress = () => {
+    api.post(helper.apiResolve('cjyun', '/api/auth/login'), {
+      account: '余乐2017360405',
+      password: '123456',
+    }).then((res) => {
+      console.log(37, res);
+    }).catch(e => console.log(39, e));
+  };
+
   return (
     <ScrollView style={{ backgroundColor: '#333' }}>
       <Text>Login</Text>
       <Button
         title="点击登陆"
-        onPress={() => { navigation.navigate('Main'); }}
+        onPress={onPress}
       />
       <Icon name="dingzheng" size={60} />
       <Svg height={300} width={300} viewBox="0 0 100 100">
