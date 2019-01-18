@@ -1,4 +1,4 @@
-import SInfo from 'react-native-sensitive-info';
+import { AsyncStorage } from 'react-native';
 import { createAction, NavigationActions, Storage } from '../utils';
 import * as authService from '../services/auth';
 
@@ -19,6 +19,14 @@ export default {
       const login = yield call(Storage.get, 'login', false);
       yield put(createAction('updateState')({ login, loading: false }));
 
+      AsyncStorage.getAllKeys().then((res) => {
+        console.log(33, res);
+      });
+
+      Storage.get('persist:root').then((res) => {
+        console.log(38, res);
+      });
+
       if (login) {
         yield put(NavigationActions.navigate({ routeName: 'Home' }));
       } else {
@@ -36,12 +44,6 @@ export default {
       console.log('login');
     },
     * logout(action, { call, put }) {
-      SInfo.getAllItems({
-        sharedPreferencesName: 'mySharedPrefs',
-        keychainService: 'myKeychain',
-      }).then((value) => {
-        console.log(36, JSON.parse(value['persist:root']));
-      });
       yield call(Storage.set, 'login', false);
       yield put(createAction('updateState')({ login: false }));
     },

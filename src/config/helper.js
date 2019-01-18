@@ -1,6 +1,5 @@
 import { site } from './site.config';
 
-console.log(2, site);
 /**
  * api链接处理
  * @param {string} siteName

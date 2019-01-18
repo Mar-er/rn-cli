@@ -2,6 +2,7 @@ module.exports = {
     "extends": "airbnb",
     "globals": {
         "__REDUX_DEVTOOLS_EXTENSION__": true,
+        "__DEV__": true
     },
     "parser": "babel-eslint",
     "rules": {
