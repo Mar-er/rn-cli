@@ -1,0 +1,36 @@
+.header_box {
+  flex-direction: row;
+  align-items: center;
+  background: transparent;
+}
+
+.buttonStyle {
+  font-size: 16px;
+  color: #333333;
+  line-height: 44px;
+  font-weight: 700;
+}
+
+.title {
+  color: #333333;
+  font-size: 16px;
+}
+
+.left, .center, .right {
+  width: 33.33%;
+  height: 44px;
+  justify-content: center;
+}
+
+.left {
+  padding-left: 18px;
+}
+
+.center {
+  align-items: center;
+}
+
+.right {
+  align-items: flex-end;
+  padding-right: 18px;
+}

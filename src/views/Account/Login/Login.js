@@ -36,6 +36,8 @@ export default ({ navigation }) => {
     }).then((res) => {
       console.log(37, res);
     }).catch(e => console.log(39, e));
+
+    navigation.navigate('Home');
   };
 
   return (

@@ -11,6 +11,7 @@ import {
   createNavigationReducer,
 } from 'react-navigation-redux-helpers';
 import { NavigationActions } from './utils';
+import Icon from './components/Icon';
 
 import Login from './views/Account/Login';
 import Logout from './views/Account/Logout';
@@ -20,6 +21,8 @@ import DoRecord from './views/DoRecord';
 import ErrorBook from './views/ErrorBook';
 import My from './views/My';
 import DoRecordFilter from './views/DoRecordFilter';
+import Header from './components/Header';
+import routeMapTitle from './utils/routeMapTitle';
 import Test from './views/Test';
 
 // 做题记录筛选抽屉路由
@@ -57,29 +60,74 @@ const navTabs = {
 };
 const navTabOptions = {
   initialRouteName: 'Home',
-  defaultNavigationOptions: {
-    header: null,
+  defaultNavigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ tintColor }) => {
+      const { routeName } = navigation.state;
+      let iconName;
+      switch (routeName) {
+        case 'Home':
+          iconName = 'zuoyerenwu';
+          break;
+        case 'DoRecord':
+          iconName = 'zuotijilu';
+          break;
+        case 'ErrorBook':
+          iconName = 'cuotiben';
+          break;
+        default:
+          iconName = 'wode';
+      }
+      return <Icon name={iconName} size={22} color={tintColor} />;
+    },
+    tabBarLabel: ({ focused }) => <Text style={{ textAlign: 'center', fontSize: 10, color: focused ? '#08C299' : '#999999' }}>啦啦啦</Text>,
+  }),
+  tabBarOptions: {
+    activeTintColor: '#08C299',
+    inactiveTintColor: '#BFBFBF',
+    tabStyle: {
+      justifyContent: 'space-between',
+      paddingTop: 5,
+      paddingBottom: 5,
+    },
+    style: {
+      height: 52,
+      borderTopColor: '#efefef',
+      // 阴影
+      shadowOffset: { width: 5, height: 0 },
+      shadowOpacity: 0.5,
+      shadowRadius: 8,
+      shadowColor: 'rgba(0,0,0,1)',
+      elevation: 6,
+    },
   },
 };
 const NavTabs = createBottomTabNavigator(navTabs, navTabOptions);
 
 // 没有 header 的路由集合
-const noHeader = {
+const noOrCustomHeader = {
   Logout: { screen: Logout },
   PasswordReset: { screen: PasswordReset },
 };
-const noHeaderOptions = {
+const noOrCustomHeaderOptions = {
   defaultNavigationOptions: {
     header: null,
   },
 };
-const NoHeader = createStackNavigator(noHeader, noHeaderOptions);
+const NoHeader = createStackNavigator(noOrCustomHeader, noOrCustomHeaderOptions);
 
 // 含有 header 的路由集合
 const hasHeader = {
   Test: { screen: Test },
 };
-const HasHeader = createStackNavigator(hasHeader);
+const hasHeaderOptions = {
+  defaultNavigationOptions: {
+    header: ({ scene }) => {
+      const { route: { routeName } } = scene;
+      return <Header title={routeMapTitle[routeName]} aaa="dfd" />;
+    },
+  },
+};
+const HasHeader = createStackNavigator(hasHeader, hasHeaderOptions);
 
 // 主体路由
 const main = {
@@ -139,6 +187,8 @@ class Router extends PureComponent {
 
   backHandle = () => {
     const { router, dispatch } = this.props;
+    console.log(192, this.props);
+    console.log(191, router);
     const currentScreen = this.getActiveRouteName(router);
     if (currentScreen === 'Login') {
       return true;

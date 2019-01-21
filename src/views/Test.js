@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet, Text, View, Button,
+} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,16 +17,23 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProfileScreen = () => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>
-      Profile Screen
-    </Text>
-  </View>
-);
+const Test = (props) => {
+  console.log(19, props);
+  return (
+    <View style={styles.container}>
+      <Text style={styles.welcome}>
+        Test
+      </Text>
+      <Button
+        title="我的"
+        onPress={() => { props.navigation.navigate('Test'); }}
+      />
+    </View>
+  );
+};
 
-ProfileScreen.navigationOptions = {
+Test.navigationOptions = {
   title: 'Profile',
 };
 
-export default ProfileScreen;
+export default Test;

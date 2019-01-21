@@ -2,7 +2,7 @@
 import { createIconSet } from 'react-native-vector-icons';
 import React from 'react';
 import PropTypes from 'prop-types';
-import TouchableOpacity from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import glyphMap from '../../public/icon/iconfont';
 
 const IconSet = createIconSet(glyphMap, 'iconfont', 'iconfont.ttf');

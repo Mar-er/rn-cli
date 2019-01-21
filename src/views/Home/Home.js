@@ -5,8 +5,8 @@ export default ({ navigation }) => (
   <View>
     <Text>Home</Text>
     <Button
-      title="做题记录筛选"
-      onPress={() => { navigation.navigate('DoRecord'); }}
+      title="Test"
+      onPress={() => { navigation.navigate('Test'); }}
     />
   </View>
 );
