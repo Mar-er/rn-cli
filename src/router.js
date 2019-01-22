@@ -10,7 +10,7 @@ import {
   createReactNavigationReduxMiddleware,
   createNavigationReducer,
 } from 'react-navigation-redux-helpers';
-import { NavigationActions } from './utils';
+import { NavigationActions, routeUtil } from './utils';
 import Icon from './components/Icon';
 
 import Login from './views/Account/Login';
@@ -22,7 +22,6 @@ import ErrorBook from './views/ErrorBook';
 import My from './views/My';
 import DoRecordFilter from './views/DoRecordFilter';
 import Header from './components/Header';
-import routeMapTitle from './utils/routeMapTitle';
 import Test from './views/Test';
 
 // 做题记录筛选抽屉路由
@@ -123,7 +122,7 @@ const hasHeaderOptions = {
   defaultNavigationOptions: {
     header: ({ scene }) => {
       const { route: { routeName } } = scene;
-      return <Header title={routeMapTitle[routeName]} aaa="dfd" />;
+      return <Header title={routeUtil.routeMapTitle[routeName]} />;
     },
   },
 };
@@ -187,8 +186,6 @@ class Router extends PureComponent {
 
   backHandle = () => {
     const { router, dispatch } = this.props;
-    console.log(192, this.props);
-    console.log(191, router);
     const currentScreen = this.getActiveRouteName(router);
     if (currentScreen === 'Login') {
       return true;

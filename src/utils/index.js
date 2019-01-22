@@ -10,6 +10,8 @@ export { default as zoomScreen } from './zoomScreen';
 
 export { default as dva } from './dva';
 
+export { default as routeUtil } from './route';
+
 export const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
 export const createAction = type => payload => ({ type, payload });
