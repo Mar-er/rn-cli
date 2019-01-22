@@ -162,20 +162,9 @@ class Router extends PureComponent {
     BackHandler.removeEventListener('hardwareBackPress', this.backHandle);
   }
 
-  getActiveRouteName = (navigationState) => {
-    if (!navigationState) {
-      return null;
-    }
-    const route = navigationState.routes[navigationState.index];
-    if (route.routes) {
-      return this.getActiveRouteName(route);
-    }
-    return route.routeName;
-  }
-
   backHandle = () => {
     const { router, dispatch } = this.props;
-    const currentScreen = this.getActiveRouteName(router);
+    const currentScreen = routeUtil.getActiveRouteName(router);
     if (currentScreen === 'Login') {
       return true;
     }
