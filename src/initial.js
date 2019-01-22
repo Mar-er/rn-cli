@@ -1,10 +1,16 @@
 import React from 'react';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, StatusBar } from 'react-native';
 import { persistStore, persistReducer } from 'redux-persist';
 import { createLogger } from 'redux-logger';
 import { dva } from './utils';
 import Router, { routerMiddleware, routerReducer } from './router';
 import appModel from './models/app';
+
+// model集合，引入的model都要加入其中
+const models = [appModel];
+
+// 添加action触发前插件
+const onAction = [routerMiddleware];
 
 // 将store缓存至 asyncStorage 配置
 const persistConfig = {
@@ -18,12 +24,32 @@ const persistEnhancer = () => createStore => (reducer, initialState, enhancer) =
 };
 
 // 添加redux日志插件
-const onAction = [routerMiddleware];
 if (__DEV__) {
   onAction.push(createLogger());
 }
 
-const models = [appModel];
+// 切换路由时更改statusBar 状态的中间件
+const changeStatusBarMiddle = params => () => next => (action) => {
+  const { routeName, type } = action;
+  // 如果未传参直接中止
+  if (!params) {
+    return next(action);
+  }
+  if (type === 'Navigation/NAVIGATE') {
+    if ((params.constructor === Array && params.findIndex(v => v === routeName) !== -1) || routeName === params) {
+      StatusBar.setBarStyle('light-content', true);
+      StatusBar.setBackgroundColor('#08C299', true);
+    } else {
+      StatusBar.setBarStyle('dark-content', true);
+      StatusBar.setBackgroundColor('transparent', true);
+    }
+  }
+  return next(action);
+};
+
+onAction.push(changeStatusBarMiddle(['Login']));
+
+// 退出登录时重置store
 const initialState = {};
 models.forEach((m) => { initialState[m.namespace] = m.state; });
 const undo = r => (state, action) => {
