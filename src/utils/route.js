@@ -17,7 +17,28 @@ const routeMapTitle = {
   PlanDetail: '计划/执行任务统计',
 };
 
+const routeMapIconAndName = {
+  Home: {
+    icon: 'zuoyerenwu',
+    name: '作业任务',
+  },
+  DoRecord: {
+    icon: 'zuotijilu',
+    name: '做题记录',
+  },
+  ErrorBook: {
+    icon: 'cuotiben',
+    name: '错题本',
+  },
+  My: {
+    icon: 'wode',
+    name: '我的',
+  },
+};
+
+
 export default {
   routeMapTitle,
   getActiveRouteName,
+  routeMapIconAndName,
 };

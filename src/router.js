@@ -59,27 +59,16 @@ const navTabs = {
 };
 const navTabOptions = {
   initialRouteName: 'Home',
-  defaultNavigationOptions: ({ navigation }) => ({
-    tabBarIcon: ({ tintColor }) => {
+  defaultNavigationOptions: ({ navigation }) => (
+    (() => {
       const { routeName } = navigation.state;
-      let iconName;
-      switch (routeName) {
-        case 'Home':
-          iconName = 'zuoyerenwu';
-          break;
-        case 'DoRecord':
-          iconName = 'zuotijilu';
-          break;
-        case 'ErrorBook':
-          iconName = 'cuotiben';
-          break;
-        default:
-          iconName = 'wode';
-      }
-      return <Icon name={iconName} size={22} color={tintColor} />;
-    },
-    tabBarLabel: ({ focused }) => <Text style={{ textAlign: 'center', fontSize: 10, color: focused ? '#08C299' : '#999999' }}>啦啦啦</Text>,
-  }),
+      const route = routeUtil.routeMapIconAndName[routeName];
+      const { icon, name } = route;
+      return {
+        tabBarIcon: ({ tintColor }) => <Icon name={icon} size={22} color={tintColor} />,
+        tabBarLabel: ({ focused }) => <Text style={{ textAlign: 'center', fontSize: 10, color: focused ? '#08C299' : '#999999' }}>{name}</Text>,
+      };
+    })()),
   tabBarOptions: {
     activeTintColor: '#08C299',
     inactiveTintColor: '#BFBFBF',
