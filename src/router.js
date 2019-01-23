@@ -42,7 +42,7 @@ const DoRecordDrawer = createDrawerNavigator(doRecordDrawer, doRecordDrawerOptio
 const navTabs = {
   Home: {
     screen: Home,
-    path: '',
+    path: 'home',
   },
   DoRecord: {
     screen: DoRecordDrawer,
@@ -54,7 +54,7 @@ const navTabs = {
   },
   My: {
     screen: My,
-    path: '',
+    path: 'my',
   },
 };
 const navTabOptions = {

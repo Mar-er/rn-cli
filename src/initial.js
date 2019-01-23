@@ -1,5 +1,5 @@
 import React from 'react';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Platform } from 'react-native';
 import { persistStore, persistReducer } from 'redux-persist';
 import { createLogger } from 'redux-logger';
 import { dva, routeUtil } from './utils';
@@ -77,7 +77,9 @@ const app = dva({
   extraReducers: { router: routerReducer },
 });
 
-const App = app.start(<Router />);
+const prefix = Platform.OS === 'android' ? 'cjhms://cjhms/' : 'cjhms://';
+
+const App = app.start(<Router uriPrefix={prefix} />);
 persistStore(app._store)   // eslint-disable-line
 
 export default App;

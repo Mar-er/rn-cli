@@ -15,6 +15,7 @@
     "remove": "adb uninstall com.cjhms_app",
     "stop": "adb shell am force-stop com.cjhms_app",
     "start-app": "adb shell am start -n com.cjhms_app/.MainActivity",
+    "link-start": "adb shell am start -W -a android.intent.action.VIEW -d cjhms://cjhms/home com.cjhms_app",
     "clear-build-cache": "cd android && gradlew clean",
     "clear-build": "rimraf android/app/build",
     "clear": "npm run clear-build-cache && npm run clear-build-cache",

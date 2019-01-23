@@ -1,6 +1,6 @@
 import { Dimensions, NativeModules, PixelRatio } from 'react-native';
 import ExtraDimensions from 'react-native-extra-dimensions-android';
-import { deviceInfo } from '.';
+import deviceInfo from './deviceInfo';
 
 /**
  * 设计图按照iPhone8 (750 * 1334) 缩小一倍尺寸 (375 * 667) 设计
