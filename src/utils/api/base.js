@@ -40,6 +40,8 @@ export default (method = 'get', url, params = {}, config = {}) => {
     .catch((err) => {
       if (findString(err.message, 'Network request failed')) {
         console.error('当前设备网络异常，请检查网络');
+      } else if (findString(err.message, 'timeout')) {
+        console.log('请求超时');
       } else {
         console.error(err.message);
       }
