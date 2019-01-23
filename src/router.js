@@ -155,6 +155,14 @@ const App = reduxifyNavigator(AppNavigator, 'root');
 @connect(({ app, router }) => ({ app, router }))
 class Router extends PureComponent {
   componentDidMount() {
+    // 每次从后台切换至前台时都需要根据当前路由重置statusBar状态
+    const { router } = this.props;
+    const currentRouter = routeUtil.getActiveRouteName(router);
+    routeUtil.statusBarImmersiveRouter.forEach((v) => {
+      routeUtil.setStatusBar(v === currentRouter);
+    });
+
+    // 监听返回按键
     BackHandler.addEventListener('hardwareBackPress', this.backHandle);
   }
 
@@ -164,11 +172,16 @@ class Router extends PureComponent {
 
   backHandle = () => {
     const { router, dispatch } = this.props;
-    const currentScreen = routeUtil.getActiveRouteName(router);
-    if (currentScreen === 'Login') {
+    const currentRouter = routeUtil.getActiveRouteName(router);
+    global.ROUTERS.pop();
+    console.log(187, global.ROUTERS);
+    console.log(186, currentRouter);
+    if (currentRouter === 'Login') {
+      console.log('在按一次退出');
       return true;
     }
-    if (currentScreen !== 'Home') {
+
+    if (currentRouter !== 'Home') {
       dispatch(NavigationActions.back());
       return true;
     }

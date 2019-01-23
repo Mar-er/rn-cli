@@ -1,8 +1,8 @@
 import React from 'react';
-import { AsyncStorage, StatusBar } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import { persistStore, persistReducer } from 'redux-persist';
 import { createLogger } from 'redux-logger';
-import { dva } from './utils';
+import { dva, routeUtil } from './utils';
 import Router, { routerMiddleware, routerReducer } from './router';
 import appModel from './models/app';
 
@@ -28,6 +28,8 @@ if (__DEV__) {
   onAction.push(createLogger());
 }
 
+global.ROUTERS = [];
+
 // 切换路由时更改statusBar 状态的中间件
 const changeStatusBarMiddle = params => () => next => (action) => {
   const { routeName, type } = action;
@@ -36,18 +38,18 @@ const changeStatusBarMiddle = params => () => next => (action) => {
     return next(action);
   }
   if (type === 'Navigation/NAVIGATE') {
-    if ((params.constructor === Array && params.findIndex(v => v === routeName) !== -1) || routeName === params) {
-      StatusBar.setBarStyle('light-content', true);
-      StatusBar.setBackgroundColor('#08C299', true);
-    } else {
-      StatusBar.setBarStyle('dark-content', true);
-      StatusBar.setBackgroundColor('transparent', true);
-    }
+    routeUtil.setStatusBar((params.constructor === Array && params.findIndex(v => v === routeName) !== -1) || routeName === params);
   }
+
+  if (action.type.indexOf('Navigation/NAVIGATE') !== -1) {
+    global.ROUTERS.push(action.routeName);
+    console.log(47, global.ROUTERS);
+  }
+
   return next(action);
 };
 
-onAction.push(changeStatusBarMiddle(['Login']));
+onAction.push(changeStatusBarMiddle(routeUtil.statusBarImmersiveRouter));
 
 // 退出登录时重置store
 const initialState = {};

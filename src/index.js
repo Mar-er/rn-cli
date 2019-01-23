@@ -21,7 +21,7 @@ class AuthLoading extends React.Component {
     return (
       <Fragment>
         <StatusBar
-          backgroundColor="transparent"
+          backgroundColor="#ffffff"
           translucent
           // barStyle="light-content" // 状态栏文字颜色白色
           barStyle="dark-content" // 状态栏文字颜色黑色
