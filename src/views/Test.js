@@ -17,20 +17,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const Test = (props) => {
-  console.log(19, props);
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>
-        Test
-      </Text>
-      <Button
-        title="我的"
-        onPress={() => { props.navigation.navigate('Test'); }}
-      />
-    </View>
-  );
-};
+const Test = () => (
+  <View style={styles.container}>
+    <Text style={styles.welcome}>
+        哈喽，又见面了，只要点击返回都会见到我咯，我是Test，我是个bug，快来解决我吧
+    </Text>
+  </View>
+);
 
 Test.navigationOptions = {
   title: 'Profile',

@@ -23,6 +23,7 @@ import My from './views/My';
 import DoRecordFilter from './views/DoRecordFilter';
 import Header from './components/Header';
 import Test from './views/Test';
+import Test1 from './views/Test1';
 
 // 做题记录筛选抽屉路由
 const doRecordDrawer = {
@@ -106,6 +107,7 @@ const NoHeader = createStackNavigator(noOrCustomHeader, noOrCustomHeaderOptions)
 // 含有 header 的路由集合
 const hasHeader = {
   Test: { screen: Test },
+  Test1: { screen: Test1 },
 };
 const hasHeaderOptions = {
   defaultNavigationOptions: {

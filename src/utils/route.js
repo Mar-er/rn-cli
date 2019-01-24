@@ -28,7 +28,7 @@ const setStatusBar = (param) => {
 
 // 映射路由title
 const routeMapTitle = {
-  Test: '测试',
+  Test: '我就是个bug快来解决我吧',
   PersonalInformation: '个人信息',
   SubjectSetting: '作业PK科目设置',
   RankBoard: '排行榜',

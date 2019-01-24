@@ -6,7 +6,7 @@ export default ({ navigation }) => (
     <Text>Home</Text>
     <Button
       title="Test"
-      onPress={() => { navigation.navigate('Test'); }}
+      onPress={() => { navigation.navigate('Test1'); }}
     />
   </View>
 );

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, Button, StyleSheet, ScrollView,
+  Text, Button, StyleSheet, ScrollView,
 } from 'react-native';
 import Svg, {
   Circle, Rect,
@@ -9,8 +9,6 @@ import SvgUri from 'react-native-svg-uri';
 import Xlog from 'react-native-xlog';
 import LinearGradient from 'react-native-linear-gradient';
 import { VictoryBar } from 'victory-native';
-import { api } from '../../../utils';
-import { helper } from '../../../config';
 import Icon from '../../../components/Icon';
 import CSvgUri from '../../../components/Svg';
 import LiquidFill from '../../../components/LiquidFill';
@@ -30,21 +28,14 @@ export default ({ navigation }) => {
   Xlog.info('tag', 'log');
 
   const onPress = () => {
-    api.post(helper.apiResolve('cjyun', '/api/auth/login'), {
-      account: '余乐2017360405',
-      password: '123456',
-    }).then((res) => {
-      console.log(37, res);
-    }).catch(e => console.log(39, e));
-
-    navigation.navigate('Home');
+    navigation.navigate('Test1');
   };
 
   return (
     <ScrollView style={{ backgroundColor: '#333' }}>
       <Text>Login</Text>
       <Button
-        title="点击登陆"
+        title="点击体验bug"
         onPress={onPress}
       />
       <Icon name="dingzheng" size={60} />
